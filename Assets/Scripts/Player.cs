@@ -7,13 +7,29 @@ public class Player : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;
 
+    private int _health;
+
     private string _xAxisName = "Horizontal";
     private string _zAxisName = "Vertical";
-
     private float _deadZone = 0.1f;
-    private Quaternion _startRotation = Quaternion.Euler(0, 90, 0);
+    private Quaternion _startRotation = Quaternion.Euler(0, 180, 0);
 
     public Quaternion StartRotation => _startRotation;
+
+    public int Health
+    {
+        get
+        {
+            return _health;
+        }
+        set
+        {
+            if (_health <= 0)
+                _health = 0;
+
+            _health = value;
+        }
+    }
 
     private void Awake()
     {
