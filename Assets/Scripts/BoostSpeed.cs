@@ -6,16 +6,16 @@ public class BoostSpeed : Boost
 {
     private float _additiveSpeed = 10.0f;
 
-    private float _time;
-    private float _speedUpTime = 3.0f;
+    private float _speedUpCurrentTime;
+    private float _speedUpTime;
 
     protected override void Update()
     {
         base.Update();
 
-        _time += Time.deltaTime;
+        _speedUpCurrentTime += Time.deltaTime;
 
-        while (_time < _speedUpTime)
+        while (_speedUpCurrentTime < _speedUpTime)
             ActivateBoost();
 
 
@@ -26,7 +26,7 @@ public class BoostSpeed : Boost
         Destroy(gameObject);
         ActivateBoost();
 
-        _time = 0;
+        _speedUpCurrentTime = 0;
     }
 
     public override void ActivateBoost()
