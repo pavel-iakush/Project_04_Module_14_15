@@ -4,10 +4,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Mover _mover;
     [SerializeField] private Rotator _rotator;
+    [SerializeField] private HealthPoints _healthPoints;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;
-
-    private int _health;
+    [SerializeField] private int _health;
 
     private string _xAxisName = "Horizontal";
     private string _zAxisName = "Vertical";
@@ -16,27 +16,13 @@ public class Player : MonoBehaviour
 
     public Quaternion StartRotation => _startRotation;
 
-    public int Health
-    {
-        get
-        {
-            return _health;
-        }
-        set
-        {
-            if (_health <= 0)
-                _health = 0;
-
-            _health = value;
-        }
-    }
-
     private void Awake()
     {
         transform.rotation = _startRotation;
 
         _mover.Initialize(_moveSpeed);
         _rotator.Initialize(_rotateSpeed);
+        _healthPoints.Initialize(_health);
     }
 
     private void Update()

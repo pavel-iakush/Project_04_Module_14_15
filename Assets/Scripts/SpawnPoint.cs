@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    private Booster _booster;
+    private Boost _booster;
 
     public bool IsEmpty
     {
@@ -14,7 +14,7 @@ public class SpawnPoint : MonoBehaviour
                 return true;
 
             if (_booster.gameObject == null)
-                return false;
+                return true;
 
             return false;
         }
@@ -22,7 +22,7 @@ public class SpawnPoint : MonoBehaviour
 
     public Vector3 Position => transform.position;
 
-    public void Occupy(Booster booster)
+    public void Occupy(Boost booster)
     {
         _booster = booster;
     }

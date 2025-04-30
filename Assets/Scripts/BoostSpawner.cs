@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BoostSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Booster> _boostPrefab;
+    [SerializeField] private List<Boost> _boostPrefab;
     [SerializeField] private List<SpawnPoint> _spawnPoints;
 
     [SerializeField] private float _cooldown;
@@ -14,20 +14,19 @@ public class BoostSpawner : MonoBehaviour
     {
         _time += Time.deltaTime;
 
-        if (_time >= _cooldown )
+        if (_time >= _cooldown)
         {
             List<SpawnPoint> emptyPoints = GetEmptyPoints();
 
             if (emptyPoints.Count == 0)
             {
-                this._time = 0;
+                _time = 0;
                 return;
             }
 
-            SpawnPoint spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-            Booster boostPrefab = _boostPrefab[Random.Range(0, _boostPrefab.Count)];
+            SpawnPoint spawnPoint = emptyPoints[Random.Range(0, emptyPoints.Count)];
 
-            Booster booster = Instantiate(boostPrefab, spawnPoint.Position, Quaternion.identity);
+            Boost booster = Instantiate(_boostPrefab[Random.Range(0, _boostPrefab.Count)], spawnPoint.Position, Quaternion.identity);
 
             spawnPoint.Occupy(booster);
 

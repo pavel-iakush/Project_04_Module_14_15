@@ -4,6 +4,18 @@ public class Mover : MonoBehaviour
 {
     private float _moveSpeed;
 
+    public float MoveSpeed
+    {   
+        get
+        {
+            return _moveSpeed;
+        }
+        set
+        {
+            _moveSpeed = value;
+        }
+    }
+
     public void Initialize(float speed)
     {
         _moveSpeed = speed;

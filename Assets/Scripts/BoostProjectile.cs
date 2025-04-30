@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Booster : MonoBehaviour
+public class BoostProjectile : Boost
 {
-    public void BoostEffect()
+    public override void ActivateBoost()
     {
-        Debug.Log("Effect");
     }
 }

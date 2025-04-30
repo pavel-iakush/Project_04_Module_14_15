@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5592723499183545095}
   - component: {fileID: 5007862932306947797}
+  - component: {fileID: 7182882100819849320}
   m_Layer: 0
   m_Name: ProjectileBoost
   m_TagString: Untagged
@@ -139,3 +140,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7, y: 1.2362095, z: 0.7}
   m_Center: {x: 0.00000008195639, y: 1.09, z: 0.05132896}
+--- !u!114 &7182882100819849320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962259827249130940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6379bc384c80a7a43a5d3db18213b8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
