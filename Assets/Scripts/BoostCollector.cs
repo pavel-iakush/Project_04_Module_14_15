@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class BoostCollector : MonoBehaviour
 {
-    [SerializeField] private Transform _playerHand;
+    [SerializeField] private Transform _armSlot;
 
     private KeyCode _useCommand = KeyCode.F;
-    private Boost _boost;
 
-    private bool _isBoostPicked = false;
+    private List<Boost> _boost;
 
     private void OnTriggerEnter(Collider other)
     {
-        _boost = other.GetComponent<Boost>();
+        _boost.Add(other.GetComponent<Boost>());
 
-        if (_boost != null && _isBoostPicked == false)
+        if (_boost != null)
         {
-            _boost.transform.parent = _playerHand.transform;
-
-            _isBoostPicked = true;
+            _boost[0].transform.parent = _armSlot.transform;
+            _boost[0].transform.position = _armSlot.position;
         }
     }
 
@@ -27,10 +25,8 @@ public class BoostCollector : MonoBehaviour
     {
         if (Input.GetKeyDown(_useCommand) && _boost != null)
         {
-            _boost.Use();
-            _boost = null;
-
-            _isBoostPicked = false;
+            _boost[0].Use();
+            _boost.Clear();
         }
     }
 }

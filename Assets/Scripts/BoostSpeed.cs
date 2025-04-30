@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoostSpeed : Boost
 {
-    private float _additiveSpeed = 10.0f;
+    private float _boostSpeed = 10.0f;
 
     private float _speedUpCurrentTime;
     private float _speedUpTime;
@@ -31,6 +31,6 @@ public class BoostSpeed : Boost
 
     public override void ActivateBoost()
     {
-        _mover.MoveSpeed += _additiveSpeed;
+        _mover.MoveSpeed += _boostSpeed;
     }
 }
