@@ -8,14 +8,16 @@ public class BoostCollector : MonoBehaviour
 
     private KeyCode _useCommand = KeyCode.F;
 
-    private List<Boost> _boost;
+    private List<Boost> _boost = new List<Boost>();
 
     private void OnTriggerEnter(Collider other)
     {
-        _boost.Add(other.GetComponent<Boost>());
+        Boost boost = other.GetComponent<Boost>();
 
         if (_boost != null)
         {
+            _boost.Add(boost);
+
             _boost[0].transform.parent = _armSlot.transform;
             _boost[0].transform.position = _armSlot.position;
         }
@@ -23,10 +25,20 @@ public class BoostCollector : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_useCommand) && _boost != null)
+        if (IsUseCommandPressed())
         {
-            _boost[0].Use();
-            _boost.Clear();
+            if (_boost.Count == 0)
+            {
+                Debug.Log("Hands are empty, nothing to use");
+            }
+            else
+            {
+                _boost[0].Use();
+                _boost.Clear();
+            }
         }
     }
+
+    private bool IsUseCommandPressed()
+        => Input.GetKeyDown(_useCommand);
 }

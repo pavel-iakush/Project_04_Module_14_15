@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2faf86563b7fc44a91448cc73ad864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHand: {fileID: 1568572916}
+  _armSlot: {fileID: 1568572916}
 --- !u!54 &1196905910
 Rigidbody:
   m_ObjectHideFlags: 0
