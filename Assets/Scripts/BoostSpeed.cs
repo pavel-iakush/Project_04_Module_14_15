@@ -4,33 +4,49 @@ using UnityEngine;
 
 public class BoostSpeed : Boost
 {
-    private float _boostSpeed = 10.0f;
+    [SerializeField] private GameObject _lightning;
 
-    private float _speedUpCurrentTime;
-    private float _speedUpTime;
+    private float _boostSpeed = 10.0f;
+    private float _speedUpDuration = 3.0f;
+    private float _currentTime;
+    private bool _isAccelerated = false;
 
     protected override void Update()
     {
         base.Update();
 
-        _speedUpCurrentTime += Time.deltaTime;
+        
 
-        while (_speedUpCurrentTime < _speedUpTime)
-            ActivateBoost();
+        if (_isAccelerated == true)
+        {
+            _currentTime += Time.deltaTime;
 
-
+            if (_currentTime >= _speedUpDuration)
+                DeactivateBoost();
+        }
     }
 
     public override void Use()
     {
-        Destroy(gameObject);
         ActivateBoost();
 
-        _speedUpCurrentTime = 0;
+        _lightning.SetActive(false);
+
+        _isAccelerated = true;
+        _currentTime = 0;
     }
 
     public override void ActivateBoost()
     {
         _mover.MoveSpeed += _boostSpeed;
+    }
+    
+    private void DeactivateBoost()
+    {
+        _mover.MoveSpeed -= _boostSpeed;
+
+        _isAccelerated = false;
+
+        Destroy(gameObject);
     }
 }

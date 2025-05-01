@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387c72958532fa54c96c64c45e7f80fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lightning: {fileID: 4935399428894625109}
 --- !u!1 &4935399428894625109
 GameObject:
   m_ObjectHideFlags: 0

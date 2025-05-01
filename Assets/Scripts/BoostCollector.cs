@@ -12,11 +12,11 @@ public class BoostCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Boost boost = other.GetComponent<Boost>();
+        Boost currentBoost = other.GetComponent<Boost>();
 
         if (_boost != null)
         {
-            _boost.Add(boost);
+            _boost.Add(currentBoost);
 
             _boost[0].transform.parent = _armSlot.transform;
             _boost[0].transform.position = _armSlot.position;
