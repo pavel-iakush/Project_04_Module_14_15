@@ -13,10 +13,6 @@ public class BoostSpeed : Boost
 
     protected override void Update()
     {
-        base.Update();
-
-        
-
         if (_isAccelerated == true)
         {
             _currentTime += Time.deltaTime;

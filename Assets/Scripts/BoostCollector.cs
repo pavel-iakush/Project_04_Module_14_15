@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoostCollector : MonoBehaviour
 {
     [SerializeField] private Transform _armSlot;
+    [SerializeField] private Transform _projectileSlot;
 
     private KeyCode _useCommand = KeyCode.F;
 
@@ -20,6 +21,15 @@ public class BoostCollector : MonoBehaviour
 
             _boost[0].transform.parent = _armSlot.transform;
             _boost[0].transform.position = _armSlot.position;
+        }
+
+        if (_boost != null && currentBoost.GetComponent<BoostProjectile>())
+        {
+            _boost.Add(currentBoost);
+
+            _boost[0].transform.parent = _projectileSlot.transform;
+            _boost[0].transform.position = _projectileSlot.position;
+            _boost[0].transform.localRotation = Quaternion.identity;
         }
     }
 

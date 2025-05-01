@@ -4,11 +4,6 @@ using UnityEngine;
 
 public abstract class Boost : MonoBehaviour
 {
-    private float _rotateSpeed = 300.0f;
-    private float _timeScale = 10.0f;
-    private float _yFactor = 500.0f;
-    private float _time;
-
     private string _playerName = "Player_grp";
 
     protected Mover _mover;
@@ -22,9 +17,7 @@ public abstract class Boost : MonoBehaviour
 
     protected virtual void Update()
     {
-        _time += Time.deltaTime;
-        transform.Rotate(Vector3.up, _rotateSpeed * Time.deltaTime);
-        transform.position += Vector3.up * Mathf.Sin(_time * _timeScale) / _yFactor;
+        
     }
 
     public abstract void ActivateBoost();

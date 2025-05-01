@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 8036704811171755271}
   - component: {fileID: 4478742914203420359}
   - component: {fileID: 6206081326640517467}
+  - component: {fileID: 1667865584485476677}
   m_Layer: 0
   m_Name: lightning
   m_TagString: Untagged
@@ -151,3 +152,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1667865584485476677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935399428894625109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563cbf09608f81b4daa1de7fbb65df10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

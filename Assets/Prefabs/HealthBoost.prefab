@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 1291243344079225959}
   - component: {fileID: 2788328138042334170}
   - component: {fileID: 6001995095478121871}
+  - component: {fileID: 2329544426582421116}
   m_Layer: 0
   m_Name: heart_teamRed
   m_TagString: Untagged
@@ -150,3 +151,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2329544426582421116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868919141069199097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563cbf09608f81b4daa1de7fbb65df10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
