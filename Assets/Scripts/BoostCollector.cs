@@ -17,19 +17,12 @@ public class BoostCollector : MonoBehaviour
 
         if (_boost != null)
         {
-            _boost.Add(currentBoost);
-
-            _boost[0].transform.parent = _armSlot.transform;
-            _boost[0].transform.position = _armSlot.position;
+            AttachToArmSlot(currentBoost);
         }
 
         if (_boost != null && currentBoost.GetComponent<BoostProjectile>())
         {
-            _boost.Add(currentBoost);
-
-            _boost[0].transform.parent = _projectileSlot.transform;
-            _boost[0].transform.position = _projectileSlot.position;
-            _boost[0].transform.localRotation = Quaternion.identity;
+            AttachToProjectileSlot(currentBoost);
         }
     }
 
@@ -37,13 +30,13 @@ public class BoostCollector : MonoBehaviour
     {
         if (IsUseCommandPressed())
         {
-            if (_boost.Count == 0)
+            if (HasNoItem())
             {
                 Debug.Log("Hands are empty, nothing to use");
             }
             else
             {
-                _boost[0].Use();
+                _boost[0].UseBoost();
                 _boost.Clear();
             }
         }
@@ -51,4 +44,24 @@ public class BoostCollector : MonoBehaviour
 
     private bool IsUseCommandPressed()
         => Input.GetKeyDown(_useCommand);
+
+    private bool HasNoItem()
+        => _boost.Count == 0;
+
+    private void AttachToArmSlot(Boost currentBoost)
+    {
+        _boost.Add(currentBoost);
+
+        _boost[0].transform.parent = _armSlot.transform;
+        _boost[0].transform.position = _armSlot.position;
+    }
+
+    private void AttachToProjectileSlot(Boost currentBoost)
+    {
+        _boost.Add(currentBoost);
+
+        _boost[0].transform.parent = _projectileSlot.transform;
+        _boost[0].transform.position = _projectileSlot.position;
+        _boost[0].transform.localRotation = Quaternion.identity;
+    }
 }

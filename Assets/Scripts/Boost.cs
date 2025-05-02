@@ -20,11 +20,6 @@ public abstract class Boost : MonoBehaviour
         
     }
 
-    public abstract void ActivateBoost();
+    public abstract void UseBoost();
 
-    public virtual void Use()
-    {
-        Destroy(gameObject);
-        ActivateBoost();
-    }
 }

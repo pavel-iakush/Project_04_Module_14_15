@@ -22,19 +22,14 @@ public class BoostSpeed : Boost
         }
     }
 
-    public override void Use()
+    public override void UseBoost()
     {
-        ActivateBoost();
+        _mover.MoveSpeed += _boostSpeed;
 
         _lightning.SetActive(false);
 
         _isAccelerated = true;
         _currentTime = 0;
-    }
-
-    public override void ActivateBoost()
-    {
-        _mover.MoveSpeed += _boostSpeed;
     }
     
     private void DeactivateBoost()

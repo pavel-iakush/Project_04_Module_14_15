@@ -6,10 +6,12 @@ public class BoostHealth : Boost
 {
     private int _boostHealth = 35;
 
-    public override void ActivateBoost()
+    public override void UseBoost()
     {
         _healthPoints.Health += _boostHealth;
 
-        Debug.Log($"Player health {_healthPoints.Health}");
+        Debug.Log($"Player health increased to {_healthPoints.Health}");
+
+        Destroy(gameObject);
     }
 }
