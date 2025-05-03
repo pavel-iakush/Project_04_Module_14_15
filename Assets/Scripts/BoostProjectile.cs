@@ -13,17 +13,27 @@ public class BoostProjectile : Boost
     {
         if (_isShot)
         {
-            transform.Translate(Vector3.down * _moveSpeed * Time.deltaTime);
-            _currentTime += Time.deltaTime;
-
-            if (_currentTime >= _duration)
-                Destroy(gameObject);
+            MoveProjectile();
+            UpdateLifetime();
         }
     }
 
     public override void UseBoost()
     {
-        gameObject.transform.parent = null;
+        transform.SetParent(null);
         _isShot = true;
+    }
+
+    private void MoveProjectile()
+    {
+        transform.Translate(Vector3.down * _moveSpeed * Time.deltaTime);
+    }
+
+    private void UpdateLifetime()
+    {
+        _currentTime += Time.deltaTime;
+
+        if (_currentTime >= _duration)
+            Destroy(gameObject);
     }
 }
