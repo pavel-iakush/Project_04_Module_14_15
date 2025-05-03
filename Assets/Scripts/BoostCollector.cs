@@ -13,17 +13,12 @@ public class BoostCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Boost currentBoost = other.GetComponent<Boost>();
+        PickBoost(other);
+    }
 
-        if (_boost != null)
-        {
-            AttachToArmSlot(currentBoost);
-        }
-
-        if (_boost != null && currentBoost.GetComponent<BoostProjectile>())
-        {
-            AttachToProjectileSlot(currentBoost);
-        }
+    private void OnTriggerStay(Collider other)
+    {
+        PickBoost(other);
     }
 
     private void Update()
@@ -63,5 +58,20 @@ public class BoostCollector : MonoBehaviour
         _boost[0].transform.parent = _projectileSlot.transform;
         _boost[0].transform.position = _projectileSlot.position;
         _boost[0].transform.localRotation = Quaternion.identity;
+    }
+
+    private void PickBoost(Collider other)
+    {
+        Boost currentBoost = other.GetComponent<Boost>();
+
+        if (_boost != null)
+        {
+            AttachToArmSlot(currentBoost);
+        }
+
+        if (_boost != null && currentBoost.GetComponent<BoostProjectile>())
+        {
+            AttachToProjectileSlot(currentBoost);
+        }
     }
 }

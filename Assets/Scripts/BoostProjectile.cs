@@ -4,36 +4,16 @@ using UnityEngine;
 
 public class BoostProjectile : Boost
 {
-    private float _moveSpeed = 30.0f;
-    private float _duration = 1.0f;
-    private float _currentTime;
-    private bool _isShot = false;
-
-    protected override void Update()
-    {
-        if (_isShot)
-        {
-            MoveProjectile();
-            UpdateLifetime();
-        }
-    }
-
     public override void UseBoost()
     {
-        transform.SetParent(null);
-        _isShot = true;
-    }
+        Vector3 _currentPosition = transform.position;
+        Quaternion _currentRotation = transform.rotation;
+        GameObject _projectile = Instantiate(gameObject, _currentPosition, _currentRotation);
 
-    private void MoveProjectile()
-    {
-        transform.Translate(Vector3.down * _moveSpeed * Time.deltaTime);
-    }
+        _projectile.AddComponent<MoveProjectile>();
+        _projectile.GetComponent<BoostProjectile>().enabled = false;
+        _projectile.GetComponent<BoxCollider>().enabled = false;
 
-    private void UpdateLifetime()
-    {
-        _currentTime += Time.deltaTime;
-
-        if (_currentTime >= _duration)
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
