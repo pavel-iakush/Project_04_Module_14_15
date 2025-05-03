@@ -224,8 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boostPrefab:
   - {fileID: 2520172427925898787, guid: 2868939f42000ca40b9309044a5cf69f, type: 3}
-  - {fileID: -6765132958604289707, guid: 6f89d0d48bd64ef428f0968f9df95a5a, type: 3}
-  - {fileID: 7182882100819849320, guid: feef61b23b9c2fd4eb9acb82f4942fe8, type: 3}
+  - {fileID: 2520172427925898787, guid: 2868939f42000ca40b9309044a5cf69f, type: 3}
+  - {fileID: 2520172427925898787, guid: 2868939f42000ca40b9309044a5cf69f, type: 3}
   _spawnPoints:
   - {fileID: 534831892}
   - {fileID: 1711077861}

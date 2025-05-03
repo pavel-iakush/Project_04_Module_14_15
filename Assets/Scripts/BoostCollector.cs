@@ -8,18 +8,13 @@ public class BoostCollector : MonoBehaviour
     [SerializeField] private Transform _projectileSlot;
 
     private KeyCode _useCommand = KeyCode.F;
-
-    private List<Boost> _boost = new List<Boost>();
+    private Boost _currentBoost;
 
     private void OnTriggerEnter(Collider other)
-    {
-        PickBoost(other);
-    }
+        => TryPickBoost(other);
 
     private void OnTriggerStay(Collider other)
-    {
-        PickBoost(other);
-    }
+        => TryPickBoost(other);
 
     private void Update()
     {
@@ -31,8 +26,8 @@ public class BoostCollector : MonoBehaviour
             }
             else
             {
-                _boost[0].UseBoost();
-                _boost.Clear();
+                _currentBoost.UseBoost();
+                ClearCurrentBoost();
             }
         }
     }
@@ -41,37 +36,41 @@ public class BoostCollector : MonoBehaviour
         => Input.GetKeyDown(_useCommand);
 
     private bool HasNoItem()
-        => _boost.Count == 0;
+        => _currentBoost == null;
 
-    private void AttachToArmSlot(Boost currentBoost)
+    private void ClearCurrentBoost()
     {
-        _boost.Add(currentBoost);
-
-        _boost[0].transform.parent = _armSlot.transform;
-        _boost[0].transform.position = _armSlot.position;
+        if (_currentBoost != null)
+            _currentBoost = null;
     }
 
-    private void AttachToProjectileSlot(Boost currentBoost)
+    private void TryPickBoost(Collider other)
     {
-        _boost.Add(currentBoost);
+        if (_currentBoost != null)
+            return;
 
-        _boost[0].transform.parent = _projectileSlot.transform;
-        _boost[0].transform.position = _projectileSlot.position;
-        _boost[0].transform.localRotation = Quaternion.identity;
+        _currentBoost = other.GetComponent<Boost>();
+
+        if (_currentBoost.GetComponent<BoostProjectile>())
+        {
+            AttachToProjectileSlot(_currentBoost);
+        }
+        else
+        {
+            AttachToArmSlot(_currentBoost);
+        }
     }
 
-    private void PickBoost(Collider other)
+    private void AttachToArmSlot(Boost boost)
     {
-        Boost currentBoost = other.GetComponent<Boost>();
+        boost.transform.parent = _armSlot;
+        boost.transform.position = _armSlot.position;
+    }
 
-        if (_boost != null)
-        {
-            AttachToArmSlot(currentBoost);
-        }
-
-        if (_boost != null && currentBoost.GetComponent<BoostProjectile>())
-        {
-            AttachToProjectileSlot(currentBoost);
-        }
+    private void AttachToProjectileSlot(Boost boost)
+    {
+        boost.transform.parent = _projectileSlot;
+        boost.transform.position = _projectileSlot.position;
+        boost.transform.localRotation = Quaternion.identity;
     }
 }
