@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class BoostHealth : Boost
 {
@@ -8,18 +9,19 @@ public class BoostHealth : Boost
 
     private int _boostHealth = 35;
 
-    public override void UseBoost()
+    public override void Use()
     {
-        Vector3 currentPosition = transform.position;
-        Quaternion currentRotation = transform.rotation;
+        Vector3 currentPosition = transform.position + new Vector3(0, 0.5f, 0);
+        Quaternion currentRotation = transform.localRotation;
 
         _healthPoints.Health += _boostHealth;
 
         Debug.Log($"Player health increased to {_healthPoints.Health}");
 
         Instantiate(_particleSystem, currentPosition, currentRotation);
-        _particleSystem.transform.rotation = Quaternion.Euler(Vector3.up);
-        _particleSystem.Play();
+        
+        //_particleSystem.Play();
+
         Destroy(gameObject);
     }
 }

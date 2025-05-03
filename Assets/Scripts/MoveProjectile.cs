@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class MoveProjectile : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _particles;
+
     private float _moveSpeed = 30.0f;
     private float _lifetime = 1.0f;
     private float _currentTime;
+
+    private void Start()
+    {
+        _particles.Play();
+    }
 
     private void Update()
     {
@@ -15,15 +22,18 @@ public class MoveProjectile : MonoBehaviour
     }
 
     private void ProcessMove()
-    {
-        transform.Translate(Vector3.down * _moveSpeed * Time.deltaTime);
-    }
+        => transform.Translate(Vector3.down * _moveSpeed * Time.deltaTime);
 
     private void UpdateLifetime()
     {
         _currentTime += Time.deltaTime;
 
         if (_currentTime >= _lifetime)
+        {
+            _particles.Stop();
+            _particles.Clear();
+
             Destroy(gameObject);
+        }
     }
 }

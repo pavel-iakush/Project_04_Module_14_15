@@ -20,6 +20,6 @@ public abstract class Boost : MonoBehaviour
         
     }
 
-    public abstract void UseBoost();
+    public abstract void Use();
 
 }

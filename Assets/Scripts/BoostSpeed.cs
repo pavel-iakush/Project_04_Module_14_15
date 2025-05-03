@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoostSpeed : Boost
 {
     [SerializeField] private GameObject _lightning;
+    [SerializeField] private ParticleSystem _particles;
 
     private float _boostSpeed = 10.0f;
     private float _speedUpDuration = 3.0f;
@@ -22,7 +23,7 @@ public class BoostSpeed : Boost
         }
     }
 
-    public override void UseBoost()
+    public override void Use()
     {
         _mover.MoveSpeed += _boostSpeed;
 
@@ -30,6 +31,9 @@ public class BoostSpeed : Boost
 
         _isAccelerated = true;
         _currentTime = 0;
+
+        _particles.transform.rotation = Quaternion.Euler(-45, 0, 0);
+        _particles.Play();
     }
     
     private void DeactivateBoost()
@@ -37,6 +41,9 @@ public class BoostSpeed : Boost
         _mover.MoveSpeed -= _boostSpeed;
 
         _isAccelerated = false;
+
+        _particles.Stop();
+        _particles.Clear();
 
         Destroy(gameObject);
     }

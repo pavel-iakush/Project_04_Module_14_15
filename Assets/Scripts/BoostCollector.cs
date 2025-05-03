@@ -22,11 +22,11 @@ public class BoostCollector : MonoBehaviour
         {
             if (HasNoItem())
             {
-                Debug.Log("Hands are empty, nothing to use");
+                NotifyNoItem();
             }
             else
             {
-                _currentBoost.UseBoost();
+                _currentBoost.Use();
                 ClearCurrentBoost();
             }
         }
@@ -73,4 +73,7 @@ public class BoostCollector : MonoBehaviour
         boost.transform.position = _projectileSlot.position;
         boost.transform.localRotation = Quaternion.identity;
     }
+
+    private void NotifyNoItem()
+        => Debug.Log("Hands are empty, nothing to use");
 }
