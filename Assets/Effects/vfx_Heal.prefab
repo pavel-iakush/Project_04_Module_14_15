@@ -14675,6 +14675,7 @@ GameObject:
   - component: {fileID: 3385278354868134611}
   - component: {fileID: 6778504483973454294}
   - component: {fileID: 8811286232433304261}
+  - component: {fileID: 3522566442275719307}
   m_Layer: 0
   m_Name: vfx_Heal
   m_TagString: Untagged
@@ -19499,6 +19500,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &3522566442275719307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127294665669476807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d7d0faffbb8dc4ba72734cd0a9fc99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6577077566090502690
 GameObject:
   m_ObjectHideFlags: 0
