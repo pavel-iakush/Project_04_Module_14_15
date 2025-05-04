@@ -10,11 +10,14 @@ public class Playground : MonoBehaviour
     {
         if (IsOutOfLeftBorder())
             StopPlayerAtLeftBorder();
-        else if (IsOutOfRightBorder())
+
+        if (IsOutOfRightBorder())
             StopPlayerAtRightBorder();
-        else if (IsOutOfUpperBorder())
+
+        if (IsOutOfUpperBorder())
             StopPlayerAtUpperBorder();
-        else if (IsOutOfLowerBorder())
+
+        if (IsOutOfLowerBorder())
             StopPlayerAtLowerBorder();
     }
 
