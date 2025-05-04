@@ -6,6 +6,7 @@ public class BoostSpeed : Boost
 {
     [SerializeField] private GameObject _lightning;
     [SerializeField] private ParticleSystem _particles;
+    [SerializeField] private Transform _effectSlot;
 
     private float _boostSpeed = 10.0f;
     private float _speedUpDuration = 3.0f;
@@ -32,7 +33,9 @@ public class BoostSpeed : Boost
         _isAccelerated = true;
         _currentTime = 0;
 
-        _particles.transform.rotation = Quaternion.Euler(-45, 0, 0);
+        GameObject slot = GameObject.Find("speedEffect_slot");
+        _particles.transform.position = slot.transform.position;
+        _particles.transform.rotation = slot.transform.rotation;
         _particles.Play();
     }
     
