@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public abstract class Boost : MonoBehaviour
 {
@@ -17,9 +18,7 @@ public abstract class Boost : MonoBehaviour
 
     protected virtual void Update()
     {
-        
     }
 
     public abstract void Use();
-
 }
