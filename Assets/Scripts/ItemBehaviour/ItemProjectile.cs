@@ -12,7 +12,7 @@ public class ItemProjectile : Item
     public override void Use(GameObject owner)
     {
         SlotProjectile slotProjectile = owner.GetComponentInChildren<SlotProjectile>();
-        Projectile projectile = Instantiate(_projectilePrefab, slotProjectile.transform.position, Quaternion.identity, null);
+        Projectile projectile = Instantiate(_projectilePrefab, slotProjectile.transform.position, slotProjectile.transform.rotation, null);
 
         projectile.GetComponent<Projectile>().enabled = true;
         projectile.GetComponent<ItemProjectile>().enabled = false;
