@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bonusSpeed: 10
+  _speedUpDuration: 3
   _lightning: {fileID: 4935399428894625109}
   _speedupEffect: {fileID: 8604028563214597023}
 --- !u!1 &4935399428894625109

@@ -17,6 +17,7 @@ public class ItemHealth : Item
         SlotMoveEffect slotMoveEffect = owner.GetComponentInChildren<SlotMoveEffect>();
         ParticleSystem healthEffect = Instantiate(_healthEffect, slotMoveEffect.transform.position, Quaternion.identity, null);
         healthEffect.Play();
+        Remove();
     }
 
     public override void Remove()

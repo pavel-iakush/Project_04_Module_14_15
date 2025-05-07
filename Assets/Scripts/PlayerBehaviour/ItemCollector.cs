@@ -42,8 +42,6 @@ public class ItemCollector : MonoBehaviour
             }
 
             _item.Use(_owner);
-            _item.Remove();
-            //play particle effect
             _item = null;
         }
     }

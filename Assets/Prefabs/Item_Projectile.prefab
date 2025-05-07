@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6379bc384c80a7a43a5d3db18213b8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 1877061630007165739}
 --- !u!114 &1877061630007165739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1279b96bbd655084b8624680e3a4f03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particles: {fileID: 5240903318362006416}
+  _speed: 30
+  _lifetime: 1
+  _projectileEffect: {fileID: 5240903318362006416}
 --- !u!1001 &1367855267466668900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,75 +191,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5592723499183545095}
     m_Modifications:
-    - target: {fileID: 1335684929715962142, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: prewarm
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335684929715962142, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421428627443958446, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421428627443958446, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421428627443958446, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421428627443958446, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421428627443958446, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242295751379568438, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6503467047527991540, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6641438041668404594, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8125244325776340828, guid: 85c6d8795c35d2648a6b2ae637f08e08,
         type: 3}
       propertyPath: m_Name
       value: vfx_Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135092559741118518, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135092559741118518, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135092559741118518, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9135092559741118518, guid: 85c6d8795c35d2648a6b2ae637f08e08,
         type: 3}
@@ -307,11 +245,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135092559741118518, guid: 85c6d8795c35d2648a6b2ae637f08e08,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
