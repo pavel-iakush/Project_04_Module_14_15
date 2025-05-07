@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class ItemHealth : Item
 {
-    [SerializeField] private ParticleSystem _particleSystem;
-    [SerializeField] private Transform _effectSlot;
+    [SerializeField] private int _bonusHealth;
+    [SerializeField] private ParticleSystem _healthEffect;
 
-    private int _boostHealth = 35;
-
-    public override void Use()
+    public override bool CanUse(GameObject owner)
     {
-        _healthPoints.Value += _boostHealth;
-        Debug.Log($"Player health increased to {_healthPoints.Value}");
+        return owner.GetComponent<HealthPoints>() != null;
+    }
 
-        Instantiate(_particleSystem, _effectSlot.position, _effectSlot.rotation);
+    public override void Use(GameObject owner)
+    {
+        SlotMoveEffect slotMoveEffect = owner.GetComponentInChildren<SlotMoveEffect>();
 
-        Destroy(gameObject);
+        ParticleSystem healthEffect = Instantiate(_healthEffect, slotMoveEffect.transform.position, Quaternion.identity, null);
+        healthEffect.Play();
     }
 }

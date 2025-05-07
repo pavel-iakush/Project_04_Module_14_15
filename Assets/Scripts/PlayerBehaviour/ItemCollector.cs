@@ -2,13 +2,59 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
+    [SerializeField] private GameObject _owner;
     [SerializeField] private Transform _armSlot;
     [SerializeField] private Transform _projectileSlot;
 
+    private Item _item;
+
     private KeyCode _useCommand = KeyCode.F;
-    private Item _currentBoost;
 
     private void OnTriggerEnter(Collider other)
+    {
+        if (_item != null)
+            return;
+
+        Item item = other.GetComponent<Item>();
+
+        if (item != null)
+        {
+            if (item.CanUse(_owner) == false)
+            {
+                Debug.Log("You are not able to take this item");
+                return;
+            }
+
+        _item = item;
+        _item.transform.SetParent(_armSlot);
+        _item.transform.localPosition = Vector3.zero;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(_useCommand))
+        {
+            if (HasNoItem())
+            {
+                NotifyNoItem();
+                return;
+            }
+
+            _item.Use(_owner);
+            _item.Remove();
+            //play particle effect
+            _item = null;
+        }
+    }
+
+    private bool HasNoItem()
+        => _item == null;
+
+    private void NotifyNoItem()
+        => Debug.Log("Hands are empty, nothing to use");
+
+    /*private void OnTriggerEnter(Collider other)
         => TryPickBoost(other);
 
     private void OnTriggerStay(Collider other)
@@ -24,7 +70,7 @@ public class ItemCollector : MonoBehaviour
             }
             else
             {
-                _currentBoost.Use();
+                _item.Use();
                 ClearCurrentBoost();
             }
         }
@@ -34,28 +80,28 @@ public class ItemCollector : MonoBehaviour
         => Input.GetKeyDown(_useCommand);
 
     private bool HasNoItem()
-        => _currentBoost == null;
+        => _item == null;
 
     private void ClearCurrentBoost()
     {
-        if (_currentBoost != null)
-            _currentBoost = null;
+        if (_item != null)
+            _item = null;
     }
 
     private void TryPickBoost(Collider other)
     {
-        if (_currentBoost != null)
+        if (_item != null)
             return;
 
-        _currentBoost = other.GetComponent<Item>();
+        _item = other.GetComponent<Item>();
 
-        if (_currentBoost.GetComponent<ItemProjectile>())
+        if (_item.GetComponent<ItemProjectile>())
         {
-            AttachToProjectileSlot(_currentBoost);
+            AttachToProjectileSlot(_item);
         }
         else
         {
-            AttachToArmSlot(_currentBoost);
+            AttachToArmSlot(_item);
         }
     }
 
@@ -73,5 +119,5 @@ public class ItemCollector : MonoBehaviour
     }
 
     private void NotifyNoItem()
-        => Debug.Log("Hands are empty, nothing to use");
+        => Debug.Log("Hands are empty, nothing to use");*/
 }

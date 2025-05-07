@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 7182882100819849320}
   - component: {fileID: 1877061630007165739}
   m_Layer: 0
-  m_Name: ProjectileBoost
+  m_Name: Item_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,8 +1,50 @@
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class ItemSpeedup : Item
 {
-    [SerializeField] private GameObject _lightning;
+    [SerializeField] private float _bonusSpeed;
+
+    private float _speedUpDuration = 3.0f;
+    private float _time;
+    private bool _isAccelerated = false;
+
+    private GameObject _owner;
+
+    public override bool CanUse(GameObject owner)
+    {
+        return owner.GetComponent<Mover>() != null;
+    }
+
+    public override void Use(GameObject owner)
+    {
+        _owner = owner;
+
+        owner.GetComponent<Mover>().Value += _bonusSpeed;
+        _isAccelerated = true;
+        _time = 0.0f;
+    }
+
+    public override void Remove()
+    {
+        _owner.GetComponent<Mover>().Value -= _bonusSpeed;
+        _isAccelerated = false;
+        
+        base.Remove();
+    }
+
+    private void Update()
+    {
+        if (_isAccelerated && _owner != null)
+        {
+            _time += Time.deltaTime;
+
+            if (_time >= _speedUpDuration)
+                Remove();
+        }
+    }
+
+    /*[SerializeField] private GameObject _lightning;
     [SerializeField] private ParticleSystem _particles;
     [SerializeField] private Transform _effectSlot;
 
@@ -24,7 +66,7 @@ public class ItemSpeedup : Item
 
     public override void Use()
     {
-        _mover.MoveSpeed += _boostSpeed;
+        _mover.Value += _boostSpeed;
 
         _lightning.SetActive(false);
 
@@ -39,7 +81,7 @@ public class ItemSpeedup : Item
     
     private void DeactivateBoost()
     {
-        _mover.MoveSpeed -= _boostSpeed;
+        _mover.Value -= _boostSpeed;
 
         _isAccelerated = false;
 
@@ -47,5 +89,6 @@ public class ItemSpeedup : Item
         _particles.Clear();
 
         Destroy(gameObject);
-    }
+    }*/
+
 }

@@ -2,20 +2,12 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    private string _playerName = "Player_grp";
+    public abstract bool CanUse(GameObject owner);
 
-    protected Mover _mover;
-    protected HealthPoints _healthPoints;
+    public abstract void Use(GameObject owner);
 
-    private void Awake()
+    public virtual void Remove()
     {
-        _mover = GameObject.Find(_playerName).GetComponent<Mover>();
-        _healthPoints = GameObject.Find(_playerName).GetComponent<HealthPoints>();
+        Destroy(gameObject);
     }
-
-    protected virtual void Update()
-    {
-    }
-
-    public abstract void Use();
 }

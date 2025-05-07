@@ -2,7 +2,22 @@ using UnityEngine;
 
 public class ItemProjectile : Item
 {
-    public override void Use()
+    public override bool CanUse(GameObject owner)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Remove()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Use(GameObject owner)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    /*public override void Use()
     {
         Vector3 currentPosition = transform.position;
         Quaternion currentRotation = transform.rotation;
@@ -13,5 +28,6 @@ public class ItemProjectile : Item
         projectile.GetComponent<BoxCollider>().enabled = false;
 
         Destroy(gameObject);
-    }
+    }*/
+
 }

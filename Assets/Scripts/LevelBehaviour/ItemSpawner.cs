@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Item> _boostPrefab;
+    [SerializeField] private List<Item> _itemPrefab;
     [SerializeField] private List<SpawnPoint> _spawnPoints;
 
     [SerializeField] private float _cooldown;
@@ -26,7 +26,7 @@ public class ItemSpawner : MonoBehaviour
 
             SpawnPoint spawnPoint = emptyPoints[Random.Range(0, emptyPoints.Count)];
 
-            Item item = Instantiate(_boostPrefab[Random.Range(0, _boostPrefab.Count)], spawnPoint.Position, Quaternion.identity);
+            Item item = Instantiate(_itemPrefab[Random.Range(0, _itemPrefab.Count)], spawnPoint.Position, Quaternion.identity);
 
             spawnPoint.Occupy(item);
 
