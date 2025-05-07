@@ -641,11 +641,11 @@ GameObject:
   - component: {fileID: 1196905904}
   - component: {fileID: 1196905911}
   - component: {fileID: 1196905910}
+  - component: {fileID: 1196905905}
   - component: {fileID: 1196905908}
   - component: {fileID: 1196905907}
   - component: {fileID: 1196905912}
   - component: {fileID: 1196905906}
-  - component: {fileID: 1196905905}
   - component: {fileID: 1196905909}
   m_Layer: 0
   m_Name: Player_grp

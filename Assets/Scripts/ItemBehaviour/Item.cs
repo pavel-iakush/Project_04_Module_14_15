@@ -6,8 +6,5 @@ public abstract class Item : MonoBehaviour
 
     public abstract void Use(GameObject owner);
 
-    public virtual void Remove()
-    {
-        Destroy(gameObject);
-    }
+    public abstract void Remove();
 }

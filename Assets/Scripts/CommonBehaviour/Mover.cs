@@ -14,7 +14,15 @@ public class Mover : MonoBehaviour
         }
         set
         {
-            _value = value;
+            float newValue = value;
+
+            if (newValue > _maxValue)
+                newValue = _maxValue;
+
+            if (newValue == _value)
+                return;
+
+            _value = newValue;
 
             if (_value >= _maxValue)
                 _value = _maxValue;
@@ -31,4 +39,14 @@ public class Mover : MonoBehaviour
 
     public void ProcessMoveTo(Vector3 direction)
         => transform.Translate(direction * _value * Time.deltaTime, Space.World);
+
+    public void IncreaseSpeed(float amount)
+    {
+        Value = _value + amount;
+    }
+    
+    public void DecreaseSpeed(float amount)
+    {
+        Value = _value - amount;
+    }
 }

@@ -12,9 +12,15 @@ public class ItemHealth : Item
 
     public override void Use(GameObject owner)
     {
-        SlotMoveEffect slotMoveEffect = owner.GetComponentInChildren<SlotMoveEffect>();
+        owner.GetComponent<HealthPoints>().AddHealth(_bonusHealth);
 
+        SlotMoveEffect slotMoveEffect = owner.GetComponentInChildren<SlotMoveEffect>();
         ParticleSystem healthEffect = Instantiate(_healthEffect, slotMoveEffect.transform.position, Quaternion.identity, null);
         healthEffect.Play();
+    }
+
+    public override void Remove()
+    {
+        Destroy(gameObject);
     }
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
+using static UnityEngine.ParticleSystem;
 
 public class ItemSpeedup : Item
 {
     [SerializeField] private float _bonusSpeed;
+    [SerializeField] private GameObject _lightning;
+    [SerializeField] private ParticleSystem _speedupEffect;
 
     private float _speedUpDuration = 3.0f;
     private float _time;
@@ -20,22 +22,21 @@ public class ItemSpeedup : Item
     {
         _owner = owner;
 
-        owner.GetComponent<Mover>().Value += _bonusSpeed;
+        owner.GetComponent<Mover>().IncreaseSpeed(_bonusSpeed);
+
+        _lightning.SetActive(false);
         _isAccelerated = true;
         _time = 0.0f;
-    }
 
-    public override void Remove()
-    {
-        _owner.GetComponent<Mover>().Value -= _bonusSpeed;
-        _isAccelerated = false;
-        
-        base.Remove();
+        SlotMoveEffect slotMoveEffect = owner.GetComponentInChildren<SlotMoveEffect>();
+        _speedupEffect.transform.position = slotMoveEffect.transform.position;
+        _speedupEffect.transform.rotation = slotMoveEffect.transform.rotation;
+        _speedupEffect.Play();
     }
 
     private void Update()
     {
-        if (_isAccelerated && _owner != null)
+        if (_isAccelerated)
         {
             _time += Time.deltaTime;
 
@@ -44,6 +45,18 @@ public class ItemSpeedup : Item
         }
     }
 
+    public override void Remove()
+    {
+        _owner.GetComponent<Mover>().DecreaseSpeed(_bonusSpeed);
+        _isAccelerated = false;
+
+        _speedupEffect.Stop();
+        _speedupEffect.Clear();
+
+        Debug.Log("control point");
+
+        Destroy(gameObject);
+    }
     /*[SerializeField] private GameObject _lightning;
     [SerializeField] private ParticleSystem _particles;
     [SerializeField] private Transform _effectSlot;
